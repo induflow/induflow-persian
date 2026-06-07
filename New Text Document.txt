@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InduFlow | Industrial Instrumentation</title>
+    <!-- Tailwind CSS - برای طراحی مدرن -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome - برای آیکون‌ها -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
+        body { font-family: 'Vazirmatn', sans-serif; transition: all 0.3s ease; }
+        .ltr { direction: ltr; font-family: ui-sans-serif, system-ui; }
+        .rtl { direction: rtl; font-family: 'Vazirmatn', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 rtl" id="mainBody">
+
+    <script>
+        /* ---------------------------------------------------------
+           بخش مدیریت محتوا و محصولات
+           برای تغییر عکس‌ها، نام فایل‌های خود را در بخش img جایگزین کنید
+        --------------------------------------------------------- */
+        const CONTENT = {
+            fa: {
+                brand: "ایندو فلو",
+                heroTitle: "تامین تخصصی قطعات ابزاردقیق و هیدرولیک",
+                heroSub: "موجودی کامل Rosemount, Bosch, E+H و Mecair در انبار تهران",
+                callBtn: "تماس با ما",
+                langBtn: "English",
+                getQuote: "استعلام قیمت",
+                address: "تهران، بازار لاله زار جنوبی",
+                products: [
+                    { name: "ترانسمیتر فشار روزمونت", brand: "Rosemount", desc: "سری ۳۰۵۱ آکبند، موجود در انبار", img: "img1.jpg" },
+                    { name: "سنسور سطح E+H", brand: "Endress+Hauser", desc: "سری Liquiphant FTL31 استیل", img: "img2.jpg" },
+                    { name: "تجهیزات هیدرولیک بوش", brand: "Bosch", desc: "قطعات اصلی بوش آلمان", img: "img3.jpg" },
+                    { name: "شیر برقی مک‌ایر", brand: "Mecair", desc: "پالس ولو و شیرهای کنترلی ایتالیا", img: "img4.jpg" }
+                ]
+            },
+            en: {
+                brand: "InduFlow",
+                heroTitle: "Industrial Instrumentation & Hydraulics",
+                heroSub: "Specialized in Rosemount, Bosch, E+H & Mecair Supply",
+                callBtn: "Contact Us",
+                langBtn: "فارسی",
+                getQuote: "Get a Quote",
+                address: "Lalezar St, Tehran, Iran",
+                products: [
+                    { name: "Rosemount Transmitter", brand: "Rosemount", desc: "3051 Series, Brand New Stock", img: "img1.jpg" },
+                    { name: "E+H Level Sensor", brand: "Endress+Hauser", desc: "FTL31 Series - Stainless Steel", img: "img2.jpg" },
+                    { name: "Bosch Hydraulics", brand: "Bosch", desc: "Genuine Bosch Rexroth Germany", img: "img3.jpg" },
+                    { name: "Mecair Solenoid Valve", brand: "Mecair", desc: "Italy Pulse Valves & Controllers", img: "img4.jpg" }
+                ]
+            }
+        };
+
+        let currentLang = 'fa';
+        const PHONE = "09120000000"; // شماره تماس خود را اینجا وارد کنید
+        const WHATSAPP = "989120000000"; // شماره واتس‌اپ بدون صفر و با 98
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'fa' ? 'en' : 'fa';
+            updateContent();
+        }
+    </script>
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-900 text-white p-1.5 rounded-lg text-sm"><i class="fas fa-microchip"></i></div>
+                <span class="text-xl font-black text-blue-900" id="brandText"></span>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="toggleLanguage()" class="text-xs font-bold bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200" id="langSwitchBtn"></button>
+                <a href="#" id="navCallBtn" class="bg-orange-500 text-white px-4 py-2 rounded-full font-bold text-xs shadow-md"></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="bg-slate-900 py-20 text-white text-center relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="text-3xl md:text-5xl font-black mb-4 leading-tight" id="heroTitle"></h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto" id="heroSub"></p>
+        </div>
+    </header>
+
+    <!-- Products -->
+    <section class="container mx-auto py-16 px-6">
+        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- محتوا توسط جاوااسکریپت پر می‌شود -->
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="bg-blue-900 py-16 text-white text-center">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center gap-8 text-4xl">
+                <a id="waLink" href="#" class="hover:text-green-400 transition"><i class="fab fa-whatsapp"></i></a>
+                <a id="phLink" href="#" class="hover:text-orange-400 transition"><i class="fas fa-phone-alt"></i></a>
+            </div>
+            <p class="mt-8 text-slate-300 italic" id="footerAddr"></p>
+        </div>
+    </section>
+
+    <script>
+        function updateContent() {
+            const data = CONTENT[currentLang];
+            const body = document.getElementById('mainBody');
+
+            // تنظیم جهت و زبان
+            if(currentLang === 'fa') {
+                body.className = "bg-slate-50 text-slate-900 rtl";
+                body.dir = "rtl";
+            } else {
+                body.className = "bg-slate-50 text-slate-900 ltr";
+                body.dir = "ltr";
+            }
+
+            document.getElementById('brandText').innerText = data.brand;
+            document.getElementById('langSwitchBtn').innerText = data.langBtn;
+            document.getElementById('navCallBtn').innerText = data.callBtn;
+            document.getElementById('navCallBtn').href = "tel:" + PHONE;
+            document.getElementById('heroTitle').innerText = data.heroTitle;
+            document.getElementById('heroSub').innerText = data.heroSub;
+            document.getElementById('footerAddr').innerText = data.address;
+            document.getElementById('waLink').href = "https://wa.me/" + WHATSAPP;
+            document.getElementById('phLink').href = "tel:" + PHONE;
+
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            data.products.forEach(p => {
+                grid.innerHTML += `
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-xl transition-all">
+                        <div class="h-48 bg-slate-100 overflow-hidden flex items-center justify-center">
+                            <!-- در صورت نبود عکس، آیکون نمایش داده می‌شود -->
+                            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/400x300?text=${p.brand}'">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-orange-500 text-[10px] font-black uppercase tracking-tighter">${p.brand}</span>
+                            <h3 class="font-bold text-slate-800 my-1">${p.name}</h3>
+                            <p class="text-slate-500 text-xs mb-4 h-8 overflow-hidden">${p.desc}</p>
+                            <a href="https://wa.me/${WHATSAPP}?text=Inquiry: ${p.name}" class="block text-center bg-slate-900 text-white py-2 rounded-xl font-bold text-xs hover:bg-orange-500 transition">
+                                ${data.getQuote}
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        updateContent();
+    </script>
+</body>
+</html>
